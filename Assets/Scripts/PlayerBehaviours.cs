@@ -16,8 +16,8 @@ public class PlayerBehaviours : MonoBehaviour
 {
     public KeyCode leftControl;
     public KeyCode rightControl;
-    public float moveSpeed;
-    //public MovementModes currentMovementMode;
+    public float moveSpeed, turnSpeed;
+    public MovementModes currentMovementMode;
 
 
 
@@ -28,8 +28,11 @@ public class PlayerBehaviours : MonoBehaviour
         leftControl = KeyCode.LeftControl;
         rightControl = KeyCode.RightControl;
 
-    }
+        moveSpeed = 5f;
+        turnSpeed = 100f;
 
+        currentMovementMode = MovementModes.ROTATING;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -51,14 +54,30 @@ public class PlayerBehaviours : MonoBehaviour
 
     void MoveLeft()
     {
-        Vector3 movementVector = Vector3.left * moveSpeed * Time.deltaTime;
-        transform.position += movementVector;
+        if(currentMovementMode == MovementModes.STRAFING)
+        {
+            Vector3 movementVector = Vector3.left * moveSpeed * Time.deltaTime;
+            transform.position += movementVector;
+        }
+        else if(currentMovementMode == MovementModes.ROTATING)
+        {
+            Vector3 rotationVector = Vector3.forward * turnSpeed * Time.deltaTime;
+            transform.eulerAngles += rotationVector;
+        }
     }
 
     void MoveRight()
     {
-        Vector3 movementVector = Vector3.right * moveSpeed * Time.deltaTime;
-        transform.position += movementVector;
+        if (currentMovementMode == MovementModes.STRAFING)
+        {
+            Vector3 movementVector = Vector3.right * moveSpeed * Time.deltaTime;
+            transform.position += movementVector;
+        }
+        else if (currentMovementMode == MovementModes.ROTATING)
+        {
+            Vector3 rotationVector = Vector3.back * turnSpeed * Time.deltaTime;
+            transform.eulerAngles += rotationVector;
+        }
     }
 
     void Shoot()
