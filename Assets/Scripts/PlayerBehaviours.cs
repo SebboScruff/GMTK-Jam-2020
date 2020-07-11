@@ -16,11 +16,16 @@ public class PlayerBehaviours : MonoBehaviour
 {
     public KeyCode leftControl;
     public KeyCode rightControl;
-    public float moveSpeed;
-    //public MovementModes currentMovementMode;
+    public float moveSpeed, turnSpeed;
+    public MovementModes currentMovementMode;
+    
+    public struct bulletTypes
+    {
+        public string name;
+        public GameObject prefab;
+    }
 
-
-
+    public bulletTypes[] bullets = new bulletTypes[2];
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +33,10 @@ public class PlayerBehaviours : MonoBehaviour
         leftControl = KeyCode.LeftControl;
         rightControl = KeyCode.RightControl;
 
+        moveSpeed = 5f;
+        turnSpeed = 100f;
+
+        currentMovementMode = MovementModes.STRAFING;
     }
 
     // Update is called once per frame
@@ -46,24 +55,59 @@ public class PlayerBehaviours : MonoBehaviour
             Shoot();
         }
 
+        // TEMPORARY FIX
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SwitchMovementMode();
+        }
 
     }
 
     void MoveLeft()
     {
-        Vector3 movementVector = Vector3.left * moveSpeed * Time.deltaTime;
-        transform.position += movementVector;
+        if(currentMovementMode == MovementModes.STRAFING)
+        {
+            Vector3 movementVector = Vector3.left * moveSpeed * Time.deltaTime;
+            //transform.position += movementVector;
+            transform.Translate(movementVector);
+        }
+        else if(currentMovementMode == MovementModes.ROTATING)
+        {
+            Vector3 rotationVector = Vector3.forward * turnSpeed * Time.deltaTime;
+            transform.eulerAngles += rotationVector;
+        }
     }
 
     void MoveRight()
     {
-        Vector3 movementVector = Vector3.right * moveSpeed * Time.deltaTime;
-        transform.position += movementVector;
+        if (currentMovementMode == MovementModes.STRAFING)
+        {
+            Vector3 movementVector = Vector3.right * moveSpeed * Time.deltaTime;
+            //transform.position += movementVector;
+            transform.Translate(movementVector);
+        }
+        else if (currentMovementMode == MovementModes.ROTATING)
+        {
+            Vector3 rotationVector = Vector3.back * turnSpeed * Time.deltaTime;
+            transform.eulerAngles += rotationVector;
+        }
     }
 
     void Shoot()
     {
         Debug.Log("Bang");
+    }
+
+    void SwitchMovementMode()
+    {
+        if(currentMovementMode == MovementModes.ROTATING)
+        {
+            currentMovementMode = MovementModes.STRAFING;
+        }
+        else if(currentMovementMode == MovementModes.STRAFING)
+        {
+            currentMovementMode = MovementModes.ROTATING;
+        }
     }
 
 
