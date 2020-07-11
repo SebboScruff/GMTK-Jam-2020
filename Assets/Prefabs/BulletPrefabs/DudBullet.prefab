@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2379343526040188942}
-  - component: {fileID: 4746607722147816664}
   - component: {fileID: 1820655291490211711}
+  - component: {fileID: 4746607722147816664}
+  - component: {fileID: 223571501644010695}
   m_Layer: 0
-  m_Name: StandardBullet
+  m_Name: DudBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1820655291490211711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494676747962219941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de38c546866e4044b95bc07a36f9263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisBulletType: 0
+  moveSpeed: 0
 --- !u!212 &4746607722147816664
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -80,7 +95,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1820655291490211711
+--- !u!114 &223571501644010695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,5 +107,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de38c546866e4044b95bc07a36f9263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisBulletType: 0
+  thisBulletType: 3
   moveSpeed: 0
