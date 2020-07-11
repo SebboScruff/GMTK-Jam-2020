@@ -113,12 +113,12 @@ MonoBehaviour:
   turnSpeed: 0
   currentMovementMode: 1
   bullets:
-  - {fileID: 1494676747962219941, guid: 076fdb6e6e13cf14d98083737b556022, type: 3}
   - {fileID: 1494676747962219941, guid: b15a735f1d8fece4ab7bde090eb27f75, type: 3}
-  - {fileID: 1494676747962219941, guid: 659d6c67a51e0994cb1976752e03fdf7, type: 3}
-  - {fileID: 1494676747962219941, guid: 3144004ca3656444ca283f3fe7f93ef1, type: 3}
-  - {fileID: 1494676747962219941, guid: f6884c21c5d11ae4fb6aa576a65a697b, type: 3}
-  - {fileID: 1494676747962219941, guid: 1070d06998a43674e870f11272ec9f01, type: 3}
+  - {fileID: 1494676747962219941, guid: e8425d92df7f50b46934e784e50d7f14, type: 3}
+  - {fileID: 1494676747962219941, guid: e68c5597f48cfee41a17a68fc218c862, type: 3}
+  - {fileID: 1494676747962219941, guid: dbe2cf62e984e0e42b76315b412f4d12, type: 3}
+  - {fileID: 1494676747962219941, guid: b27da9ce32e33cf4aa1ab47753aec2e5, type: 3}
+  - {fileID: 1494676747962219941, guid: f1f91490160381c43a8ff3bf10e116e0, type: 3}
   maxShootingCD: 0.3
   firingPoint: {fileID: 4979820548565353019}
 --- !u!1 &8907879949121651900
