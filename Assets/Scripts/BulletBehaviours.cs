@@ -11,7 +11,8 @@ public class BulletBehaviours : MonoBehaviour
     BoxCollider2D coll;
     public float collDisableTimer = 0.2f;
 
-    public float bulletDuration = 3f;
+    public float bulletLifetime = 2;
+    private float bulletDuration;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class BulletBehaviours : MonoBehaviour
         InvokeRepeating("CollDisableTimer", 0.1f, 0.1f);
         coll.gameObject.SetActive(false);
 
-        InvokeRepeating("BulletTimeout", 1f, 1f);
+        bulletDuration = 0;
     }
 
     // Update is called once per frame
@@ -51,7 +52,8 @@ public class BulletBehaviours : MonoBehaviour
 
         transform.Translate(movementVector * moveSpeed * Time.deltaTime);
 
-        if(bulletDuration <= 0)
+        bulletDuration += Time.deltaTime;
+        if(bulletDuration >= bulletLifetime)
         {
             Destroy(this.gameObject);
         }
@@ -65,11 +67,6 @@ public class BulletBehaviours : MonoBehaviour
             CancelInvoke();
             coll.gameObject.SetActive(true);
         }
-    }
-
-    void BulletTimeout()
-    {
-        bulletDuration -= 1f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
