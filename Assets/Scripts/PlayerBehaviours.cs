@@ -18,14 +18,9 @@ public class PlayerBehaviours : MonoBehaviour
     public KeyCode rightControl;
     public float moveSpeed, turnSpeed;
     public MovementModes currentMovementMode;
-    
-    public struct bulletTypes
-    {
-        public string name;
-        public GameObject prefab;
-    }
 
-    public bulletTypes[] bullets = new bulletTypes[2];
+
+    public GameObject[] bullets = new GameObject[2];
 
     // Start is called before the first frame update
     void Start()
