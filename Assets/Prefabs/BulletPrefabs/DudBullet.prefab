@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5223988794166356593}
   m_Layer: 0
   m_Name: DudBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   moveSpeed: 0
   movementVector: {x: 0, y: 0, z: 0}
   collDisableTimer: 0.2
+  bulletLifetime: 2
 --- !u!50 &-4738413010373201428
 Rigidbody2D:
   serializedVersion: 4
