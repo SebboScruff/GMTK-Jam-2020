@@ -21,6 +21,11 @@ public class PlayerBehaviours : MonoBehaviour
 
 
     public GameObject[] bullets = new GameObject[2];
+    [Range(0, 1)]
+    public float maxShootingCD = 0.3f;
+    private float shootingCD;
+    public Transform firingPoint;
+
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +96,20 @@ public class PlayerBehaviours : MonoBehaviour
     void Shoot()
     {
         Debug.Log("Bang");
+        int chosenBulletIndex = Random.Range(0, bullets.Length);
+
+        Instantiate(bullets[chosenBulletIndex], firingPoint.position, firingPoint.rotation);
+        shootingCD = maxShootingCD;
+        InvokeRepeating("ShootingCooldown", 0f, 0.1f);
+    }
+
+    void ShootingCooldown()
+    {
+        if(shootingCD>0)
+        {
+            shootingCD -= 0.1f;
+        }
+        else { CancelInvoke(); }
     }
 
     void SwitchMovementMode()
