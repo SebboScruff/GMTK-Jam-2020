@@ -99,6 +99,7 @@ public class PlayerBehaviours : MonoBehaviour
     {
         Debug.Log("Bang");
         int chosenBulletIndex = Random.Range(0, bullets.Length);
+        Debug.Log(chosenBulletIndex);
 
         Instantiate(bullets[chosenBulletIndex], firingPoint.position, firingPoint.rotation);
         shootingCD = maxShootingCD;

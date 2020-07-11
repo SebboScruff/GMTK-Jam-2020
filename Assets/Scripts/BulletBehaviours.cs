@@ -6,12 +6,15 @@ public class BulletBehaviours : MonoBehaviour
 {
     public BulletType thisBulletType;
     public float moveSpeed;
-    Vector3 movementVector;
+    [SerializeField]Vector3 movementVector;
 
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = 15f;
+        if(thisBulletType != BulletType.DUD)
+        {
+            moveSpeed = 15f;
+        }
     }
 
     // Update is called once per frame
@@ -29,13 +32,13 @@ public class BulletBehaviours : MonoBehaviour
                 movementVector = Vector3.right;
                 break;
             case BulletType.DUD:
-                movementVector = Vector3.zero;
+                movementVector = new Vector3(0,0,0);
                 break;
             default:
                 break;
         }
 
-        transform.position += movementVector * moveSpeed * Time.deltaTime;
+        transform.Translate(movementVector * moveSpeed * Time.deltaTime);
     }
 
 
