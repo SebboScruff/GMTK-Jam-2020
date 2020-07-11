@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 1694835827}
   - component: {fileID: 1694835826}
   - component: {fileID: 1694835825}
+  - component: {fileID: 1694835830}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -235,8 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686e9001bfcb95247bb82f4d49c849ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0.25
-  mat: {fileID: 0}
 --- !u!64 &1694835826
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -268,7 +267,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb98ed410b691984e9f7e62ea77d4b8b, type: 2}
+  - {fileID: 2100000, guid: a790d89a3f8aa364b9063f6e59efe5b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -310,3 +309,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1694835830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694835824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0663cf4e57358418a4d3220c4b6667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 1
+  mat: {fileID: 0}
