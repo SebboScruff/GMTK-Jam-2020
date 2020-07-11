@@ -279,6 +279,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4776847202756009009, guid: 9e8f8a5d8fe0da2439ac421e252d2174,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4979820548565353019, guid: 9e8f8a5d8fe0da2439ac421e252d2174,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -288,6 +293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654564173651011126, guid: 9e8f8a5d8fe0da2439ac421e252d2174,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8654564173651011146, guid: 9e8f8a5d8fe0da2439ac421e252d2174,
         type: 3}

@@ -8,6 +8,11 @@ public class BulletBehaviours : MonoBehaviour
     public float moveSpeed;
     [SerializeField]Vector3 movementVector;
 
+    BoxCollider2D coll;
+    public float collDisableTimer = 0.2f;
+
+    public float bulletDuration = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +20,12 @@ public class BulletBehaviours : MonoBehaviour
         {
             moveSpeed = 15f;
         }
+
+        coll = GetComponent<BoxCollider2D>();
+        InvokeRepeating("CollDisableTimer", 0.1f, 0.1f);
+        coll.gameObject.SetActive(false);
+
+        InvokeRepeating("BulletTimeout", 1f, 1f);
     }
 
     // Update is called once per frame
@@ -39,9 +50,35 @@ public class BulletBehaviours : MonoBehaviour
         }
 
         transform.Translate(movementVector * moveSpeed * Time.deltaTime);
+
+        if(bulletDuration <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
+    void CollDisableTimer()
+    {
+        collDisableTimer -= 0.1f;
+        if(collDisableTimer <= 0)
+        {
+            CancelInvoke();
+            coll.gameObject.SetActive(true);
+        }
+    }
 
+    void BulletTimeout()
+    {
+        bulletDuration -= 1f;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag != "Player")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
 
 public enum BulletType
