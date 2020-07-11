@@ -18,9 +18,14 @@ public class PlayerBehaviours : MonoBehaviour
     public KeyCode rightControl;
     public float moveSpeed, turnSpeed;
     public MovementModes currentMovementMode;
+    
+    public struct bulletTypes
+    {
+        public string name;
+        public GameObject prefab;
+    }
 
-
-
+    public bulletTypes[] bullets = new bulletTypes[2];
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +36,9 @@ public class PlayerBehaviours : MonoBehaviour
         moveSpeed = 5f;
         turnSpeed = 100f;
 
-        currentMovementMode = MovementModes.ROTATING;
+        currentMovementMode = MovementModes.STRAFING;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -49,6 +55,11 @@ public class PlayerBehaviours : MonoBehaviour
             Shoot();
         }
 
+        // TEMPORARY FIX
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SwitchMovementMode();
+        }
 
     }
 
@@ -85,6 +96,18 @@ public class PlayerBehaviours : MonoBehaviour
     void Shoot()
     {
         Debug.Log("Bang");
+    }
+
+    void SwitchMovementMode()
+    {
+        if(currentMovementMode == MovementModes.ROTATING)
+        {
+            currentMovementMode = MovementModes.STRAFING;
+        }
+        else if(currentMovementMode == MovementModes.STRAFING)
+        {
+            currentMovementMode = MovementModes.ROTATING;
+        }
     }
 
 

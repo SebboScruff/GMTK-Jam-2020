@@ -110,4 +110,4 @@ MonoBehaviour:
   rightControl: 0
   moveSpeed: 0
   turnSpeed: 0
-  currentMovementMode: 0
+  currentMovementMode: 1
