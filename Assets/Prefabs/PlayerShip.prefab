@@ -112,7 +112,15 @@ MonoBehaviour:
   moveSpeed: 0
   turnSpeed: 0
   currentMovementMode: 1
-  bullets: []
+  bullets:
+  - {fileID: 1494676747962219941, guid: 076fdb6e6e13cf14d98083737b556022, type: 3}
+  - {fileID: 1494676747962219941, guid: b15a735f1d8fece4ab7bde090eb27f75, type: 3}
+  - {fileID: 1494676747962219941, guid: 659d6c67a51e0994cb1976752e03fdf7, type: 3}
+  - {fileID: 1494676747962219941, guid: 3144004ca3656444ca283f3fe7f93ef1, type: 3}
+  - {fileID: 1494676747962219941, guid: f6884c21c5d11ae4fb6aa576a65a697b, type: 3}
+  - {fileID: 1494676747962219941, guid: 1070d06998a43674e870f11272ec9f01, type: 3}
+  maxShootingCD: 0.3
+  firingPoint: {fileID: 4979820548565353019}
 --- !u!1 &8907879949121651900
 GameObject:
   m_ObjectHideFlags: 0
