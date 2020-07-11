@@ -11,7 +11,7 @@ public class BulletBehaviours : MonoBehaviour
     BoxCollider2D coll;
     public float collDisableTimer = 0.2f;
 
-    public float bulletDuration = 2f;
+    public float bulletDuration = 3f;
 
     // Start is called before the first frame update
     void Start()
