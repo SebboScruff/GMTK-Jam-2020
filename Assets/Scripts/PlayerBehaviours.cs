@@ -26,6 +26,9 @@ public class PlayerBehaviours : MonoBehaviour
     private float shootingCD;
     public Transform firingPoint;
 
+    public float maxHealth = 100;
+    float currentHealth;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,8 @@ public class PlayerBehaviours : MonoBehaviour
         currentMovementMode = MovementModes.STRAFING;
 
         shootingCD = 0f;
+
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -126,8 +131,20 @@ public class PlayerBehaviours : MonoBehaviour
             currentMovementMode = MovementModes.ROTATING;
         }
     }
+    void TakeDamage(float damageAmount)
+    {
+        Debug.Log("Current Health: " + currentHealth);
+        currentHealth -= damageAmount;
+        SwitchMovementMode();
+    }
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            TakeDamage(20);
+        }
+    }
 
 }
     public enum MovementModes
