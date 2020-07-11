@@ -33,15 +33,18 @@ public class PlayerBehaviours : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(leftControl) == true)
+        if(Input.GetKey(leftControl) == true && Input.GetKey(rightControl) == false)
         {
             MoveLeft();
         }
-        else if(Input.GetKey(rightControl) == true)
+        else if(Input.GetKey(rightControl) == true && Input.GetKey(leftControl) == false)
         {
             MoveRight();
         }
-        
+        else if(Input.GetKey(rightControl) == true && Input.GetKey(leftControl) == true)
+        {
+            Shoot();
+        }
 
 
     }
@@ -54,12 +57,13 @@ public class PlayerBehaviours : MonoBehaviour
 
     void MoveRight()
     {
-
+        Vector3 movementVector = Vector3.right * moveSpeed * Time.deltaTime;
+        transform.position += movementVector;
     }
 
     void Shoot()
     {
-
+        Debug.Log("Bang");
     }
 
 
