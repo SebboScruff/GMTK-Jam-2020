@@ -37,6 +37,8 @@ public class PlayerBehaviours : MonoBehaviour
         turnSpeed = 100f;
 
         currentMovementMode = MovementModes.STRAFING;
+
+        shootingCD = 0f;
     }
 
     // Update is called once per frame
@@ -50,7 +52,7 @@ public class PlayerBehaviours : MonoBehaviour
         {
             MoveRight();
         }
-        else if(Input.GetKey(rightControl) == true && Input.GetKey(leftControl) == true)
+        else if(Input.GetKey(rightControl) == true && Input.GetKey(leftControl) == true && shootingCD <= 0)
         {
             Shoot();
         }
