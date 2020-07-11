@@ -57,7 +57,8 @@ public class PlayerBehaviours : MonoBehaviour
         if(currentMovementMode == MovementModes.STRAFING)
         {
             Vector3 movementVector = Vector3.left * moveSpeed * Time.deltaTime;
-            transform.position += movementVector;
+            //transform.position += movementVector;
+            transform.Translate(movementVector);
         }
         else if(currentMovementMode == MovementModes.ROTATING)
         {
@@ -71,7 +72,8 @@ public class PlayerBehaviours : MonoBehaviour
         if (currentMovementMode == MovementModes.STRAFING)
         {
             Vector3 movementVector = Vector3.right * moveSpeed * Time.deltaTime;
-            transform.position += movementVector;
+            //transform.position += movementVector;
+            transform.Translate(movementVector);
         }
         else if (currentMovementMode == MovementModes.ROTATING)
         {
