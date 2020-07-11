@@ -19,13 +19,20 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         shootingFrequency = 2f;
+        shootingCooldown = shootingFrequency;
+        InvokeRepeating("ShootingCooldown", 1f, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(shootingCooldown <= 0)
+        {
+            Shoot();
+        }
 
-
+        Vector3 movement = Vector3.down * moveSpeed * Time.deltaTime;
+        transform.position += movement;
     }
 
     void Shoot()
