@@ -17,6 +17,7 @@ public class PlayerBehaviours : MonoBehaviour
     public KeyCode rightControl;
     public float moveSpeed, turnSpeed;
     public MovementModes currentMovementMode;
+    float movementSwitchTimer;
 
 
     public GameObject[] bullets = new GameObject[2];
@@ -45,6 +46,7 @@ public class PlayerBehaviours : MonoBehaviour
 
         moveSpeed = 5f;
         turnSpeed = 100f;
+        movementSwitchTimer = 0f;
 
         currentMovementMode = MovementModes.STRAFING;
 
@@ -71,6 +73,13 @@ public class PlayerBehaviours : MonoBehaviour
         else if(Input.GetKey(rightControl) == true && Input.GetKey(leftControl) == true && shootingCD <= 0)
         {
             Shoot();
+        }
+
+        movementSwitchTimer += Time.deltaTime;
+        if(movementSwitchTimer >= 20)
+        {
+            SwitchMovementMode();
+            movementSwitchTimer = 0f;
         }
 
         healthBar.fillAmount = currentHealth / maxHealth;
