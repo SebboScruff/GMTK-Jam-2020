@@ -34,6 +34,7 @@ public class PlayerBehaviours : MonoBehaviour
     public Image gameOverBG;
     public Image healthBar;
     public TextMeshProUGUI scoreText;
+    Vector2 spawnPos;
     
 
     // Start is called before the first frame update
@@ -52,6 +53,7 @@ public class PlayerBehaviours : MonoBehaviour
         currentHealth = maxHealth;
 
         score = 0;
+        spawnPos = transform.position;
         gameOverBG.gameObject.SetActive(false);
     }
 
@@ -183,6 +185,7 @@ public class PlayerBehaviours : MonoBehaviour
         {
             Destroy(enemy.gameObject);
         }
+        transform.position = spawnPos;
 
         Time.timeScale = 1f;       
     }
