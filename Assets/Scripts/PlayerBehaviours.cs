@@ -140,9 +140,9 @@ public class PlayerBehaviours : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Bullet")
+        if(collision.gameObject.tag == "EnemyBullet")
         {
-            TakeDamage(20);
+            TakeDamage(5);
         }
     }
 
