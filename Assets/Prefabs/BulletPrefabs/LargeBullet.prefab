@@ -99,6 +99,7 @@ MonoBehaviour:
   movementVector: {x: 0, y: 0, z: 0}
   collDisableTimer: 0.2
   bulletLifetime: 2
+  playerShip: {fileID: 0}
 --- !u!50 &-4738413010373201428
 Rigidbody2D:
   serializedVersion: 4

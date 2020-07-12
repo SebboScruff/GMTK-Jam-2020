@@ -14,6 +14,8 @@ public class BulletBehaviours : MonoBehaviour
     public float bulletLifetime = 2;
     private float bulletDuration;
 
+    public PlayerBehaviours playerShip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +74,10 @@ public class BulletBehaviours : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
+        if(this.gameObject.tag == "Bullet" && collision.gameObject.tag == "Enemy")
+        {
+            playerShip.score += Random.Range(50, 500);
+        }
     }
 }
 

@@ -28,7 +28,7 @@ public class PlayerBehaviours : MonoBehaviour
     public float maxHealth = 100;
     float currentHealth;
 
-    int score;
+    public int score;
 
     bool gameOver = false;
     public Image gameOverBG;
@@ -72,6 +72,7 @@ public class PlayerBehaviours : MonoBehaviour
         }
 
         healthBar.fillAmount = currentHealth / maxHealth;
+        scoreText.text = "Score: " + score.ToString();
 
         if(currentHealth <= 0)
         {
@@ -166,7 +167,7 @@ public class PlayerBehaviours : MonoBehaviour
     {
         if(collision.gameObject.tag == "EnemyBullet")
         {
-            TakeDamage(20);
+            TakeDamage(5);
         }
     }
 
