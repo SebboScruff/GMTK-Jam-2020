@@ -14,7 +14,8 @@ public class BulletBehaviours : MonoBehaviour
     public float bulletLifetime = 2;
     private float bulletDuration;
 
-    public PlayerBehaviours playerShip;
+    public GameObject playerShip;
+    public PlayerBehaviours playerShipScript;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,9 @@ public class BulletBehaviours : MonoBehaviour
         coll.gameObject.SetActive(false);
 
         bulletDuration = 0;
+
+        playerShip = GameObject.FindGameObjectWithTag("Player");
+        playerShipScript = playerShip.GetComponent<PlayerBehaviours>();
     }
 
     // Update is called once per frame
@@ -76,7 +80,7 @@ public class BulletBehaviours : MonoBehaviour
         Destroy(gameObject);
         if(this.gameObject.tag == "Bullet" && collision.gameObject.tag == "Enemy")
         {
-            playerShip.score += Random.Range(50, 500);
+            playerShipScript.score += Random.Range(50, 500);
         }
     }
 }
