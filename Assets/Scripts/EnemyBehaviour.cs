@@ -10,7 +10,8 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public float moveSpeed;
-    public float shootingFrequency, shootingCooldown;
+    public float shootingFrequency = 5f;
+    public float shootingCooldown;
 
     public Transform firingPoint;
     public GameObject bullet;
@@ -18,7 +19,6 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shootingFrequency = 2f;
         shootingCooldown = shootingFrequency;
         InvokeRepeating("ShootingCooldown", 1f, 1f);
     }
