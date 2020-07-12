@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 
 /*  Player actions to include:
- *  Strafing with L-ctrl / R-ctrl
+ *  Strafing/rotating with L-ctrl / R-ctrl
  *  Firing with CD
  *  Taking Damage
- * 
- * 
- * 
  */
 
 public class PlayerBehaviours : MonoBehaviour
@@ -29,6 +28,13 @@ public class PlayerBehaviours : MonoBehaviour
     public float maxHealth = 100;
     float currentHealth;
 
+    int score;
+
+    bool gameOver = false;
+    public Image gameOverBG;
+    public Image healthBar;
+    public TextMeshProUGUI scoreText;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +50,9 @@ public class PlayerBehaviours : MonoBehaviour
         shootingCD = 0f;
 
         currentHealth = maxHealth;
+
+        score = 0;
+        gameOverBG.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -62,10 +71,25 @@ public class PlayerBehaviours : MonoBehaviour
             Shoot();
         }
 
-        // TEMPORARY FIX
-        if(Input.GetKeyDown(KeyCode.Space))
+        healthBar.fillAmount = currentHealth / maxHealth;
+
+        if(currentHealth <= 0)
         {
-            SwitchMovementMode();
+            gameOver = true;
+        }
+
+        if (gameOver == true)
+        {
+            gameOverBG.gameObject.SetActive(true);
+            Time.timeScale = 0f;
+            if(Input.GetKey(KeyCode.R))
+            {
+                Restart();
+            }
+            if(Input.GetKey(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
         }
 
     }
@@ -142,8 +166,24 @@ public class PlayerBehaviours : MonoBehaviour
     {
         if(collision.gameObject.tag == "EnemyBullet")
         {
-            TakeDamage(5);
+            TakeDamage(20);
         }
+    }
+
+    void Restart()
+    {
+        score = 0;
+        currentHealth = maxHealth;
+        gameOver = false;
+        gameOverBG.gameObject.SetActive(false);
+
+        GameObject[] enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemiesOnScreen)
+        {
+            Destroy(enemy.gameObject);
+        }
+
+        Time.timeScale = 1f;       
     }
 
 }
