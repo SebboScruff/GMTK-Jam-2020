@@ -40,7 +40,7 @@ public class EnemyBehaviour : MonoBehaviour
         Vector3 movement = Vector3.down * moveSpeed * Time.deltaTime;
         transform.position += movement;
 
-        if(transform.position.y <= -6)
+        if(transform.position.y <= -5.5)
         {
             Destroy(gameObject);
             playerShipScript.score -= Random.Range(50, 200);
