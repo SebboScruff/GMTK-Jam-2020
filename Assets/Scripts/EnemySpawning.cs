@@ -19,7 +19,7 @@ public class EnemySpawning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnCooldown = 4f;
     }
 
     // Update is called once per frame
@@ -39,7 +39,7 @@ public class EnemySpawning : MonoBehaviour
         numberToSpawn = Random.Range(1, 6);
         for(int i = 1; i <= numberToSpawn; i++)
         {
-            Instantiate(enemyPrefab, spawnPoints[i].position, spawnPoints[i].rotation); // need to spawn only once per point per spawn event
+            Instantiate(enemyPrefab, spawnPoints[i-1].position, spawnPoints[i-1].rotation); // need to spawn only once per point per spawn event
         }
         spawnCooldown = 0f;
         spawnFrequency = Random.Range(4, 8);
