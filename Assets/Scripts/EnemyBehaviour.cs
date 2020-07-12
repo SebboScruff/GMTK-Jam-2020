@@ -16,11 +16,17 @@ public class EnemyBehaviour : MonoBehaviour
     public Transform firingPoint;
     public GameObject bullet;
 
+    public GameObject playerShip;
+    public PlayerBehaviours playerShipScript;
+
     // Start is called before the first frame update
     void Start()
     {
         shootingCooldown = shootingFrequency;
         InvokeRepeating("ShootingCooldown", 1f, 1f);
+
+        playerShip = GameObject.FindGameObjectWithTag("Player");
+        playerShipScript = playerShip.GetComponent<PlayerBehaviours>();
     }
 
     // Update is called once per frame
@@ -33,6 +39,12 @@ public class EnemyBehaviour : MonoBehaviour
 
         Vector3 movement = Vector3.down * moveSpeed * Time.deltaTime;
         transform.position += movement;
+
+        if(transform.position.y <= -6)
+        {
+            Destroy(gameObject);
+            playerShipScript.score -= Random.Range(50, 200);
+        }
     }
 
     void Shoot()

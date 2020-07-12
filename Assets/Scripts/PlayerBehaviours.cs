@@ -158,7 +158,7 @@ public class PlayerBehaviours : MonoBehaviour
     }
     void TakeDamage(float damageAmount)
     {
-        Debug.Log("Current Health: " + currentHealth);
+        //Debug.Log("Current Health: " + currentHealth);
         currentHealth -= damageAmount;
         SwitchMovementMode();
     }
